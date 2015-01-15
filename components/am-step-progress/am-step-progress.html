@@ -1,0 +1,87 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+An element that creates a progress tracker that displays icons representing the steps of the process.
+
+Currently, it is fairly basic.
+
+##### Example
+
+    <am-step-progress currentStep=0></am-step-progress>
+
+
+@element am-step-progress
+@blurb An element that creates a progress tracker.
+@status alpha
+@homepage http://MasterAM.github.io/am-step-progress
+-->
+<polymer-element name="am-step-progress" attributes="currentStep">
+
+  <template>
+
+    <link rel="stylesheet" href="am-step-progress.css" />
+    <template repeat="{{step, i in steps}}">
+      <template if={{i}}>
+        <span class="spacer {{getStepClass(i,currentStep)}}"></span>
+      </template>
+      <core-icon icon="{{step.icon}}" class="{{getStepClass(i,currentStep)}}"></core-icon>
+    </template>
+  </template>
+
+  <script>
+
+    Polymer({
+      /**
+       * The current step number, starting at 0.
+       * Setting it to:
+       * - a `negative` number means that none of the steps were encountered.
+       * - a number `larger` than the number of steps marks all of the steps as completed.
+       *
+       * @attribute currentStep
+       * @type int
+       * @default 0
+       */
+      currentStep: 0,
+
+      /**
+       * An array of objects that represents the steps.
+       * Right now only includes a list of icons, but should improve in future versions (to include labels etc.)
+       *
+       *  e.g,
+       *
+       *  `[{icon: 'shop'}, ... , {icon: 'done-all'}]`
+       *
+       *  Be sure to include the desired icon sets.
+       * @property steps
+       * @type Array
+       */
+      steps: [{icon: 'shop'}, {icon: 'maps:local-shipping'}, {icon: 'payment'}, {icon: 'done-all'}],
+
+      /**
+       * A private method that sets the class that is used for styling the element.
+       *
+       * @access private
+       * @method getStepClass
+       * @param {int} i The step number.
+       * @return {String} Returns a class name.
+       */
+      getStepClass: function (i) {
+        var k = parseInt(this.currentStep, 10);
+        if (isNaN(k)) {
+          k = 0;
+          console.warn('The currentStep attribute is invalid (NaN). Using 0 as the default value.');
+        }
+        if (i === k) {
+          return 'current';
+        }
+        if (i < k) {
+          return 'completed';
+        }
+        return 'disabled';
+      }
+
+    });
+
+  </script>
+
+</polymer-element>

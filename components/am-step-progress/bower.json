@@ -1,0 +1,20 @@
+{
+  "name": "am-step-progress",
+  "version": "0.0.1",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "am-step-progress.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.0",
+    "core-input": "Polymer/core-input#~0.5.2",
+    "core-icon": "Polymer/core-icon#~0.5.2",
+    "core-iconset": "Polymer/core-iconset#~0.5.2",
+    "paper-slider": "Polymer/paper-slider#~0.5.2"
+  }
+}

@@ -1,0 +1,27 @@
+:host {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 0.5;
+  border-bottom: 1px solid #000;
+  margin: 3px;
+}
+
+.spacer.current, .spacer.completed {
+  border-bottom-color: #333;
+}
+
+.spacer.disabled {
+  border-bottom-color: #ccc;
+}
+
+core-icon.current {
+  color: #47b52f;
+}
+
+core-icon.disabled {
+  color: #ccc;
+}
