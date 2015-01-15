@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>am-step-progress Demo</title>
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="am-step-progress.html">
+  <!--<link rel="import" href="../core-component-page/core-component-page.html">-->
+  <link rel="import" href="../core-icons/core-icons.html">
+  <link rel="import" href="../core-icons/maps-icons.html">
+  <link rel="import" href="../paper-slider/paper-slider.html">
+  <link rel="import" href="../core-input/core-input.html">
+
+  <style shim-shadowdom>
+
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      margin: 0;
+      padding: 24px;
+    }
+
+    paper-slider {
+      width: 100%;
+    }
+
+    section {
+      max-width: 1000px;
+      padding: 20px 0;
+      background-color: #f0f0f0;
+    }
+
+    section > div {
+      padding: 14px;
+    }
+
+    #ratingsLabel {
+      padding-left: 12px;
+      color: #a0a0a0;
+    }
+    input {
+
+    }
+
+  </style>
+
+</head>
+<body unresolved>
+
+  <p>An `am-step-progress` looks like this:</p>
+
+  <template is="auto-binding">
+    <style>
+      am-step-progress {
+        width: {{width}}px;
+      }
+      #step-input {
+        background-color: #fff;
+        border: 1px #333 solid;
+        padding: 1px 0 1px 5px;
+        width: 50px;
+      }
+    </style>
+    <section>
+      <div center vertical layout>
+        <am-step-progress currentStep="{{step_no}}"></am-step-progress>
+
+        <p>
+          The current step number is: {{step_no}}.
+          <br>
+          Use the below input field to change it.
+        </p>
+        <input id="step-input" is="core-input" type="number" preventInvalidInput placeholder="0" value="{{step_no}}">
+
+        <p>
+          <br>
+          The width of the element is {{width}}px.
+          <br>
+          Use the slider below to change it.
+        </p>
+        <paper-slider min=150 max=700 step=10 immediateValue="{{width}}" pin ></paper-slider>
+      </div>
+    </section>
+
+  </template>
+</body>
+</html>
